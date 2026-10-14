@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+:root {
+ --color-white:#ffff;
+ --color-purple:#3f3cbb;
+ --color-purple-100:#ecedff;
+
+ --color-blue-100:#121063;
+ --color-blue-200:#1c1c7b;
+ --color-blue-300:#e5e5ff;
+ --color-blue-400:#f5f5ff;
+ --color-blue-800:#3e3e9c;
+ --color-blue-900:#8fcfef;
+
+ --color-orange-100:#f08c10;
+
+ --color-orange-shadow: rgba(240, 140, 16, 0.25);
+
+
+
+
+
+
+
+}
