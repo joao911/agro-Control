@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ca } from "date-fns/locale";
+import { baseUrl } from "../../../api";
 
 export const useLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -34,6 +36,18 @@ export const useLogin = () => {
     const password = data.password.trim();
 
     console.log(email, password);
+    try {
+      setLoading(true);
+      const response = await baseUrl.post("/api/v1/auth/login", {
+        username: email,
+        password: password,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
   return {
     errors,

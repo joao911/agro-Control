@@ -73,7 +73,6 @@ export const Login = () => {
             render={({ field: { onChange, value, onBlur, ref } }) => (
               <TextField
                 fullWidth
-                label="Senha"
                 variant="outlined"
                 value={value}
                 onChange={onChange}
