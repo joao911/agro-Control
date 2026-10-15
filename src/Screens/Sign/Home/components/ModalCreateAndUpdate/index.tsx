@@ -18,6 +18,7 @@ import {
   type BovinoFormSubmit,
   type BovinoFormValues,
 } from "./useBovinoFormValidation";
+import { FieldLabel } from "../../../../../components/FieldLabel";
 
 const inputSx = {
   "& .MuiOutlinedInput-root": {
@@ -60,12 +61,6 @@ type ModalCreateAndUpdateProps = {
   onClose: () => void;
   onSubmit: (data: BovinoFormSubmit) => void;
 };
-
-const FieldLabel = ({ children }: { children: string }) => (
-  <p className="mb-1.5 text-[11px] font-bold tracking-wide text-[#1c274c] uppercase">
-    {children}
-  </p>
-);
 
 const formatWeight = (value: string) => {
   const normalized = value.trim().replace(/\./g, "").replace(",", ".");
