@@ -24,7 +24,7 @@ import type {
   BovinoFormSubmit,
   BovinoSex,
 } from "./components/ModalCreateAndUpdate/useBovinoFormValidation";
-import { ModalConfirm } from "../../components/ModalConfirm";
+import { ModalConfirm } from "../../../components/ModalConfirm";
 import { CardAnimal } from "./components/CardAnimal";
 
 export type HerdAnimal = {
