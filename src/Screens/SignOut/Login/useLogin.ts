@@ -1,16 +1,16 @@
 import { z } from "zod";
-import { size } from "lodash";
 import { useState } from "react";
 
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ca } from "date-fns/locale";
 import { baseUrl } from "../../../api";
+import { userStore } from "../../../store/user";
 
 export const useLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { setUser } = userStore();
 
   const navigate = useNavigate();
   const loginSchema = z.object({
@@ -42,6 +42,11 @@ export const useLogin = () => {
         username: email,
         password: password,
       });
+      setUser({
+        access_token: response.data.access_token,
+        user: response.data.user,
+      });
+      navigate("/home");
       console.log(response.data);
     } catch (error) {
       console.log(error);

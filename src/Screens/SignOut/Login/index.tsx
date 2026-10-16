@@ -1,9 +1,17 @@
+import clsx from "clsx";
 import { Controller } from "react-hook-form";
 import MailIcon from "@mui/icons-material/Mail";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
+import {
+  Button,
+  CircularProgress,
+  IconButton,
+  InputAdornment,
+  TextField,
+} from "@mui/material";
+
 import { useLogin } from "./useLogin";
 import { FieldLabel } from "../../../components/FieldLabel";
 
@@ -13,7 +21,7 @@ export const Login = () => {
     loading,
     control,
     onSubmit,
-    navigate,
+
     showPassword,
     handleSubmit,
     setShowPassword,
@@ -114,9 +122,19 @@ export const Login = () => {
 
         <Button
           variant="contained"
-          className="bg-blue-100! capitalize!"
+          className={clsx("bg-blue-100! capitalize!", {
+            "opacity-50 cursor-not-allowed": loading,
+          })}
           type="submit"
+          disabled={loading}
         >
+          <CircularProgress
+            color="inherit"
+            size={20}
+            thickness={2}
+            sx={{ mr: 1 }}
+            hidden={!loading}
+          />
           Entrar
         </Button>
       </form>

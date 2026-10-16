@@ -1,13 +1,13 @@
 import { create, type StateCreator } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
+import type { IUser } from "../../types/user";
 
 interface IUserProps {
-  user: {
-    token: string;
-    setToken: (token: string) => void;
-  };
+  user: IUser;
+  setUser(user: IUser): void;
   hasHydrated: boolean;
   setHasHydrated: (state: boolean) => void;
+  clearUser: () => void;
 }
 
 const userInformation: StateCreator<
@@ -15,15 +15,32 @@ const userInformation: StateCreator<
   [["zustand/persist", unknown]]
 > = (set) => ({
   user: {
-    token: "",
-    setToken: (token: string) => {
-      set((state) => ({
-        user: {
-          ...state.user,
-          token,
-        },
-      }));
+    access_token: "",
+
+    user: {
+      id: "",
+      email: "",
+      full_name: "",
+      role: "",
+      is_active: false,
     },
+  },
+  setUser: (user: IUser) => {
+    set({ user });
+  },
+  clearUser: () => {
+    set({
+      user: {
+        access_token: "",
+        user: {
+          id: "",
+          email: "",
+          full_name: "",
+          role: "",
+          is_active: false,
+        },
+      },
+    });
   },
   hasHydrated: false,
   setHasHydrated: (state: boolean) => {

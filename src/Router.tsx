@@ -10,7 +10,7 @@ function Router() {
   const { user } = userStore();
 
   const userLogged = useMemo(() => {
-    return Boolean(user?.token);
+    return Boolean(user?.access_token);
   }, [user]);
 
   interface ProtectedRouteProps {
@@ -37,7 +37,7 @@ function Router() {
       </Route>
       <Route element={<ProtectedRoute user={Boolean(userLogged)} />}>
         <Route element={<DefaultLayout />}>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
         </Route>
       </Route>
     </Routes>
